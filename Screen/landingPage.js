@@ -1,15 +1,17 @@
 import { StyleSheet, Text, View, Button, Pressable } from 'react-native';
 import React,{useState} from 'react'
 
+
 const buttonNames = [{names: "create account"}, {names: "login"}]
-const LandingPage = () => {
+const LandingPage = ({ navigation }) => {
     return (
         <View style={styles.safewakaContainer}>
             <Text style= {styles.createaccount}>safewaka</Text>
             <Text style= {styles.pickupline}>Drive Smarter </Text>
             <Pressable
-            // onPress={() => {}}
+            onPress={() => {navigation.navigate('CreateAccount')}}
             key = {buttonNames.names}
+
             style={({pressed}) => [
               {
                 backgroundColor: pressed ? 'green' : 'white',
@@ -40,12 +42,13 @@ const LandingPage = () => {
           <Pressable
             // onPress={() => {}}
             key = {buttonNames.names}
+            onPress={() => {navigation.navigate('LoginPage')}}
             style={({pressed}) => [
               {
                 backgroundColor: pressed ? 'green' : 'white',
                 borderRadius: 50,
                 fontFamily: 'Courier New',
-                color: '#29cb05',
+                
                 padding:10,
                 opacity: pressed ? 0.5 : 1,
                 borderColor: 'red',
@@ -92,7 +95,7 @@ const LandingPage = () => {
   createAccount: {
    
    
-    
+    color: '#29cb05',
     fontSize: 20,
     
     
