@@ -1,5 +1,5 @@
 {
-  "name": "milko",
+  "name": "safewaka",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
@@ -21,5 +21,19 @@
   "devDependencies": {
     "@babel/core": "^7.20.0"
   },
-  "private": true
+  "private": true,
+  "description": "config file for json ",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Carnegie2610/GROUP4.git"
+  },
+  "keywords": [
+    "safewaka"
+  ],
+  "author": "milkovic",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Carnegie2610/GROUP4/issues"
+  },
+  "homepage": "https://github.com/Carnegie2610/GROUP4#readme"
 }
