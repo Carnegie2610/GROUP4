@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const Go_to = () => {
+const settings = () => {
   return (
     <View>
-      <Text>Go_to</Text>
+      <Text>settings</Text>
     </View>
   )
 }
 
-export default Go_to
+export default settings
 
 const styles = StyleSheet.create({})
