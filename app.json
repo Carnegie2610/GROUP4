@@ -2,6 +2,7 @@
   "expo": {
     "name": "milko",
     "slug": "milko",
+    "scheme": "savewaka", 
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -11,6 +12,14 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "plugins": [
+      [
+        "expo-font",
+        {
+          "fonts": ["./fonts/PlaywriteDEGrund-VariableFont_wght.ttf"]
+        }
+      ]
+    ],
     "assetBundlePatterns": [
       "**/*"
     ],
