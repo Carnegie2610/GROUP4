@@ -1,14 +1,18 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import MapView from 'react-native-maps';
 
-const Home = () => {
+const waka = () => {
   return (
     <View>
-      <Text>Home</Text>
+      <Text>waka</Text>
+      <MapView  h-full w-full/>
+
+
     </View>
   )
 }
 
-export default Home
+export default waka
 
 const styles = StyleSheet.create({})
