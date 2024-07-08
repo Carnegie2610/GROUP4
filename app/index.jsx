@@ -26,13 +26,15 @@ export default function App() {
           <CustomButton 
           title="Login"
           handlePress={() => router.push('/sign-up')}
-          containerStyle="w-full top-40"
+          containerStyle="w-full top-40 text-white"
+          textStyles="text-primary"
           />
 
         <CustomButton 
           title="Create Account"
           handlePress={() => router.push('/sign-in')}
-          containerStyle="w-full top-40 mt-7 text-primary"
+          containerStyle="w-full top-40 mt-7  "
+          textStyles="text-primary"
         />
         
             

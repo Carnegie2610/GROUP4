@@ -1,26 +1,41 @@
-import { View, Text, ScrollView } from 'react-native'
+import { View, Text, ScrollView, Alert } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import TextInputcomp from '../../components/TextInputComponent'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import CustomButton from '../../components/CustomButton';
-import { Link } from 'expo-router';
+import { Link, router } from 'expo-router';
+import { createUser } from '../../lib/appwriteConfig';
 
 
 const sign_in = () => {
   const [form, setform] = useState({
-    name:'',
+    Name:'',
     email:'',
     telephone:'',
+    matricule:'',
     password:'',
-    confirmpassword:'',
+    confirmpassword:''
 
   })
 
-  const [isSubmitting, setisSubmitting] = useState()
+  const [isSubmitting, setIsSubmitting] = useState()
   
-  const submit = () => {
+  const submit = async () => {
+    if(!form.Name || !form.email || form.telephone || !form.matricule)
+      Alert.alert('Error', 'please fill all the fields')
+        setIsSubmitting(true)
 
+        //set to global state 
+
+        router.replace('/waka')
+        try {
+          const result = await createUser(form.Name, form.email, form.telephone,form.matricule,form.password,form.confirmpassword)
+        } catch (error) {
+          Alert.alert('Error', error.message)
+        }finally{
+          setIsSubmitting(false)
+        }
   }
   return (
     <SafeAreaView>
@@ -73,7 +88,7 @@ const sign_in = () => {
         <TextInputcomp
         title = "Confirm Password"
         value = {form.confirmpassword}
-        handleChangeText= {(e) => setform({ form, confirmpassoword: e})}
+        handleChangeText= {(e) => setform({ ...form, confirmpassword: e})}
         otherStyles = "mt-7"
         />
 
@@ -85,7 +100,7 @@ const sign_in = () => {
           isLoading={isSubmitting}
         />
         
-        <View className="justify-center align-center pt-5 flex-row gap-2">
+        <View className="justify-center content-center pt-5 flex-row gap-2">
           <Text className="text-lg text-gray-500  ">
           already have an account??
           </Text>

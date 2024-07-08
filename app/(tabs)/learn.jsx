@@ -1,11 +1,23 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import HeaderTabs from '../../components/HeaderTabs'
 
 const Learn = () => {
   return (
-    <View>
-      <Text>Learn</Text>
-    </View>
+   <SafeAreaView  className="">
+      <HeaderTabs 
+      title = "safewaka : road signs "
+      />
+      
+      <ScrollView className="">
+        
+        <View className="h-9/12 w-full bg-red-300">
+          <Text>
+            safewaka:road signs and safety
+          </Text>
+        </View>
+      </ScrollView>
+   </SafeAreaView>
   )
 }
 

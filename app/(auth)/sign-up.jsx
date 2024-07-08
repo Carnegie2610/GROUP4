@@ -1,14 +1,35 @@
-import { View, Text, SafeAreaView, ScrollView } from 'react-native'
+import { View, Text, SafeAreaView, ScrollView, Alert } from 'react-native'
 import React, { useState } from 'react'
 import TextInputComponent from '../../components/TextInputComponent'
 import CustomButton from '../../components/CustomButton'
-import { Link } from 'expo-router';
+import { Link, router } from 'expo-router';
+import { signIn } from '../../lib/appwriteConfig';
 
 const sign_up = () => {
   const [form, setform] = useState({
-    Username:'',
+    Name:'',
     password:''
   })
+
+  const [isSubmitting, setIsSubmitting] = useState()
+
+
+  const submit = async () => {
+    if(!form.Name || !form.email || form.telephone || !form.matricule)
+      Alert.alert('Error', 'please fill all the fields')
+        setIsSubmitting(true)
+      
+        //set to global state 
+
+        router.replace('/waka')
+        try {
+          await signIn(form.email,form.password)
+        } catch (error) {
+          Alert.alert('Error', error.message)
+        }finally{
+          setIsSubmitting(false)
+        }
+  }
   return (
     <SafeAreaView>
       <ScrollView>
@@ -19,20 +40,23 @@ const sign_up = () => {
 
         <TextInputComponent 
           title="Username"
-
+          value={form.Name}
+          handleChangeText={(e) => setform({ ...form, Name:e})}
         />
 
         <TextInputComponent 
           title="Password"
           value={form.password}
-          handleChangeText={(e) => setform({ ...form, name:e})}
+          handleChangeText={(e) => setform({ ...form, password:e})}
 
         />
 
         <CustomButton 
         title="Sign-in"
+        handlePress={submit}
         containerStyle="bg-primary mt-14"
         textStyles="text-white"
+        isLoading={isSubmitting}
         />
 
         <View className="justify-center align-center pt-5 flex-row gap-2">
